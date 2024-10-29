@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dry Hate</title>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+<link rel="manifest" href="images/favicon/site.webmanifest">
+<link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+
+    <style>
+    a {
+            color: #800;
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Color for links on hover */
+        a:hover {
+            color: #800;
+	    text-decoration: underline;
+	    text-decoration-skip-ink: auto;
+        }
+
+        /* Color for visited links */
+        a:visited {
+            color: #800;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slideshow-container {
+            
+            margin: 0 auto;
+            width: 90%;
+            padding: 10px;
+            
+        }
+         @keyframes fade {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    
+        .header-slide {
+            display: none;
+             animation-name: fade;
+        animation-duration: 1.5s;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration:1.5s;
+            opacity:1;
+            }
+         
+        .header-slide.active {
+            opacity: 1; /* Show slide */
+            }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            
+        }
+ .navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+            justify-content: center;
+            align-items: center;
+            gap: 2px; /* Adjust gap between items */
+            margin-top: 10px; /* Adjust margin as needed */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+        .navigation a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        .navigation a img {
+            max-width: 100%; /* Maximum width of link images */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer;
+            
+        }
+        .image-container {
+            display: none; /* Initially hide the image container */
+            margin-top: 20px; /* Add some space between link images and the image */
+            color: #888;
+            font-family: Courier New, monospace; /* Use Courier New font */
+    		text-align: center; 
+    		max-width: 90%; /* Limit maximum width to 90% of the screen */
+   			margin: 0 auto; /* Center the content horizontally */
+     		font-size: calc(1.25vw + 10px); /* Responsive font size based on viewport width */
+      		font-weight: 500;
+        }
+        .image-container img {
+            max-width: 90%; /* Limit the maximum width of the image */
+            height: auto; /* Maintain aspect ratio */
+            }
+        .content1 {
+            display: none; /* Initially hide content */
+             color: #888; /* Grey color */
+    font-family: Courier New, monospace; /* Use Courier New font */
+    text-align: justify; /* Left-align text */
+    max-width: 80%; /* Limit maximum width to 90% of the screen */
+    margin: 0 auto; /* Center the content horizontally */
+     font-size: calc(1.25vw + 10px); /* Responsive font size based on viewport width */
+      
+}
+
+		.content2 {
+        	display: none;
+            color: #888;
+            font-family: Courier New, monospace; /* Use Courier New font */
+    		text-align: center; 
+    		max-width: 80%; /* Limit maximum width to 90% of the screen */
+   			margin: 0 auto; /* Center the content horizontally */
+     		font-size: calc(1.25vw + 15px); /* Responsive font size based on viewport width */
+      		font-weight: 500;
+            
+}
+            
+        }
+    </style>
+
+<script>
+    // URLs of all the images on your website
+    var imageUrls = [
+        "images/LinkImages/news.png",
+        "images/LinkImages/music.png",
+	"images/LinkImages/merch.png",
+	"images/LinkImages/contact.png",
+	"images/LinkImages/extras.png",
+	"https://i.ibb.co/f1jKS7x/band-shot-03.png",
+	"images/Banners/054.png",
+	"images/Banners/005.png",
+	"images/Banners/007.png",
+	"images/Banners/010.png",
+	"images/Banners/011.png",
+	"images/Banners/012.png",
+	"images/Banners/013.png",
+	"images/Banners/014.png",
+	"images/Banners/015.png",
+	"images/Banners/019.png",
+	"images/Banners/022.png",
+	"images/Banners/023.png",
+	"images/Banners/025.png",
+	"images/Banners/030.png",
+	"images/Banners/034.png",
+	"images/Banners/036.png",
+	"images/Banners/038.png",
+	"images/Banners/041.png",
+	"images/Banners/046.png",
+	"images/Banners/048.png",
+	"images/Banners/053.png",
+	"images/Banners/054.png",
+	"https://i.ibb.co/f1jKS7x/band-shot-03.png",
+            
+        // Add more image URLs here
+    ];
+
+    // Preload images function
+    function preloadImages(urls) {
+        urls.forEach(function(url) {
+            var img = new Image();
+            img.src = url;
+        });
+    }
+
+    // Call the preloadImages function with the array of image URLs
+    preloadImages(imageUrls);
+</script>
+
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="header-slide fade active">
+            <img src="images/Banners/054.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/023.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/007.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/013.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/010.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/015.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/012.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/014.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/019.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/005.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/022.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/025.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/030.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/034.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/036.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/038.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/041.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <div class="header-slide fade active">
+            <img src="images/Banners/046.png" alt="Dry Hate" style="width:100%">
+        </div>
+         <div class="header-slide fade active">
+            <img src="images/Banners/048.png" alt="Dry Hate" style="width:100%">
+        </div>
+        <!-- Add more slide elements with images as needed -->
+    </div>
+   
+    <div class="navigation">
+        <a id="news" ><img src="images/LinkImages/news.png" alt="news"></a>
+        <a id="music"><img src="images/LinkImages/music.png" alt="music"></a>
+        <a id="merch"><img src="images/LinkImages/merch.png" alt="merch"></a>
+        <a id="contact"><img src="images/LinkImages/contact.png"  alt="contact"></a>         
+        <a id="extras"><img src="images/LinkImages/extras.png" alt="extras" ></a>
+       
+
+        <!-- Add more links with images as needed -->
+    </div>
+    
+    <div id="content1" class="content1"><strong>May 27th, 2024</strong><br>We are looking for a new drummer. Please check out our songs in the "music" section and find our contact info in the "contact" section if you or anyone you know might be interested in making a ruckus with us.<br><strong>Mad Allen</strong><br><br><br>
+    </div>
+
+<div id="content2" class="content2">Please click below to enjoy a selection of our specially curated songs chosen for your listening pleasure:<br>
+<br>
+<a href="https://drive.google.com/file/d/1m9mPbgaUTTDN7jjcVg88MVNjZc2XyNyu/view?usp=drive_link" target="_blank"><strong>Pus (bag of blood)</strong></a>
+<br><br>
+<audio controls>
+  <source src="mp3s/dryhatepusbagofblood.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><br><br>
+<a href="https://drive.google.com/file/d/1DTRhtejdQ6Bx8FFVNRmBl8mlOTBr5O4j/view?usp=drive_link" target="_blank"><strong>Sick Old Man</strong></a>
+<br><br>
+<audio controls>
+  <source src="mp3s/dryhatesickoldman.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><br><br>
+<a href="https://drive.google.com/file/d/1J7kP-cz_2xP9dSSlodHr0EPc1_AQL0-4/view?usp=drive_link"target="_blank"><strong>Make it Stop</strong></a>
+<br><br>
+<audio controls>
+  <source src="mp3s/dryhatemakeitstop.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><br><br>
+<a href="https://drive.google.com/file/d/1LE_W-E-9anqYx_TXpKS-FpfL_SF9yQji/view?usp=drive_link" target="_blank"><strong>Volcano</strong></a>
+<br><br>
+<audio controls>
+  <source src="mp3s/dryhatevolcano.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><br><br>
+<a href="https://drive.google.com/file/d/1JfTxQv2MWBNCUsQiabnss2CZHP7QwHYe/view?usp=drive_link" target="_blank"><strong>Cash From the Government</strong></a>
+<br><br>
+<audio controls>
+  <source src="mp3s/dryhatecashfromthegovernment.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><br><br>
+<br>
+</div>
+ 
+
+ <div class="image-container" id="content3">
+ <p>For now please email us here: <br><a href="mailto:dryhatemusic@gmail.com">dryhatemusic@gmail.com</a><br>for information about purchasing merchandise or come to one of our shows</p>
+ 
+        <img src="https://i.ibb.co/f1jKS7x/band-shot-03.png" alt="dryhatemusic@gmail.com for merch info" id="displayedImage"><br><br><br>
+    </div>
+<div id="content4" class="content2">
+ <p>
+    <a href="mailto:dryhatemusic@gmail.com"><strong>dryhatemusic@gmail.com</strong></a>
+    <br>
+    <br>
+    <a href="https://www.facebook.com/DryHate" target="_blank"><strong>Facebook</strong></a>
+    <br>
+    <br>
+    <a href="https://www.instagram.com/dryhatemusic/" target="_blank"><strong>Instagram</strong></a>
+    <br>
+    <br>
+    <a href="https://www.reddit.com/r/DryHate/" target="_blank"><strong>Reddit</strong></a>
+    <br>
+    <br>
+    <a href="https://www.youtube.com/@DryHate" target="_blank"><strong>YouTube</strong></a>
+    <br><br><br>
+    </p>
+    
+    </div>
+<div id="content5" class="content2">
+<p>This section of the website is still currently under development. Check back soon for videos, pics, links to other projects, and other stuff that you'd categorize under "extras".<br><br><br></p>
+</div>
+    
+    
+
+<!-- Add content for other pages -->
+
+
+
+
+	<script>
+    
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("header-slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+         document.getElementById("news").addEventListener("click", function() {
+            document.getElementById("content1").style.display = "block";
+            document.getElementById("content2").style.display = "none";
+            document.getElementById("content3").style.display = "none";
+            document.getElementById("content4").style.display = "none";
+            document.getElementById("content5").style.display = "none";
+            // Hide content for other pages and show content for Page 1
+        });
+
+        document.getElementById("music").addEventListener("click", function() {
+            document.getElementById("content1").style.display = "none";
+            document.getElementById("content2").style.display = "block";
+            document.getElementById("content3").style.display = "none";
+            document.getElementById("content4").style.display = "none";
+            document.getElementById("content5").style.display = "none";
+            // Hide content for other pages and show content for Page 2
+        });
+        
+        document.getElementById("merch").addEventListener("click", function() {
+            document.getElementById("content1").style.display = "none";
+            document.getElementById("content2").style.display = "none";
+            document.getElementById("content3").style.display = "block";
+            document.getElementById("content4").style.display = "none";
+            document.getElementById("content5").style.display = "none";
+            // Hide content for other pages and show content for Page 3
+        });
+        document.getElementById("contact").addEventListener("click", function() {
+            document.getElementById("content1").style.display = "none";
+            document.getElementById("content2").style.display = "none";
+            document.getElementById("content3").style.display = "none";
+            document.getElementById("content4").style.display = "block";
+            document.getElementById("content5").style.display = "none";
+            // Hide content for other pages and show content for Page 4
+        });
+        document.getElementById("extras").addEventListener("click", function() {
+            document.getElementById("content1").style.display = "none";
+            document.getElementById("content2").style.display = "none";
+            document.getElementById("content3").style.display = "none";
+            document.getElementById("content4").style.display = "none";
+            document.getElementById("content5").style.display = "block";
+            // Hide content for other pages and show content for Page 5
+        });
+        // Add event listeners for other link images as needed
+    </script>
+</body>
+</html>
